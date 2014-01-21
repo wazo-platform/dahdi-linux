@@ -1,0 +1,8 @@
+To allow echo.ko build
+Index: dahdi-linux-2.7.0/drivers/staging/echo/Makefile
+===================================================================
+--- dahdi-linux-2.7.0.orig/drivers/staging/echo/Makefile
++++ dahdi-linux-2.7.0/drivers/staging/echo/Makefile
+@@ -1 +1 @@
+-obj-$(CONFIG_ECHO) += echo.o
++obj-m += echo.o
