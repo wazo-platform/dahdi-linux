@@ -1,0 +1,18 @@
+Source: dahdi-linux
+Section: comm
+Priority: extra
+Maintainer: XiVO Dev Team <dev@avencall.com>
+Build-Depends: dahdi-source
+Uploaders: XiVO Builder Team <release@xivo.fr>
+Standards-Version: 3.7.2
+
+Package: dahdi-linux-modules-_KVERS_
+Architecture: any
+Depends: linux-image-_KVERS_ | kernel-image-_KVERS_, dahdi-linux (>= ${source:Version})
+Provides: dahdi-modules
+Description: DAHDI modules for Linux (kernel _KVERS_).
+ This package contains the set of loadable kernel modules for the
+ DAHDI telephony API.
+ This package contains the compiled kernel modules for _KVERS_
+ .
+ In order to compile these modules use the module-assistant utility.

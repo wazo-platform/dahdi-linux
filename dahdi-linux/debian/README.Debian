@@ -1,0 +1,161 @@
+Building kernel modules
+-----------------------
+First, install zaptel-source package if you have not yet done so.
+
+You can build and install the modules package (as root) with the 
+following command:
+# module-assistant a-i zaptel
+
+It may be handy (for e.g., testing purposes) to build the module packages
+for all of the kernel-header packages installed on your system. Something 
+in the lines of:
+
+  m-a -u . -t -i -f -k "`echo usr/src/kernel-headers-*`" build zaptel
+
+You can also use the environment variable TARBALL to build the modules 
+with a custom zaptel.tar.bz2 tarball with some local modifications.
+
+At the moment the 'clean' operation gives there the following error,
+which is known, and is harmless (happens after cleaning the kernel dir),
+so ignore it for now:
+
+  make: *** menuselect: No such file or directory.  Stop.
+  make[1]: [clean] Error 2 (ignored)
+  make: *** ppp: No such file or directory.  Stop.
+  make[1]: *** [clean] Error 2
+
+
+Using udev
+----------
+If you are using udev, zaptel devices will be created when kernel modules 
+are loaded by using modprobe, or devices are detected by hotplug at boot time.
+
+If you cannot access the zap/ctl device, check which user asterisk is 
+running as and add these permissions to your permissions file
+(i.e. /etc/udev/permissions.d/50-udev.permissions):
+# zaptel devices -- asterisk is expected to be part of 'dialout' group
+zap/*:root:dialout:660
+
+Note, however, that beginning with Sarge, the default udev settings should 
+include those lines.
+
+
+Bristuff
+--------
+This version has the the bristuff patch and kernel modules. The bristuffed 
+modules require a bristuffed Asterisk to work. For the older asterisk 1.2 
+this is the package asterisk-bristuff . Current asterisk 1.4 packages 
+include  support for bristuff.
+
+
+FXOTune
+-------
+FXOTune is a utility provided by Digium for fine-tuning parameters of the 
+FXO modules of their TDM cards and compatibles, as well as of those of the 
+Xorcom Astribank.
+
+This package includes the fxotune utility. It will also load configuration 
+from /etc/fxotune.conf if fxotune was used to tune the FXO modules. Note 
+that fxotune will not work with X100P and similar cards.
+
+
+/etc/zaptel.conf
+----------------
+A sample /etc/zaptel.conf is no longer installed by default. You should 
+generate it manually (or automatically with genzaptelconf) if and when
+you actually have zaptel hardware and installed a zaptel-modules package
+for your kernel version.
+
+
+Supported tone-zones
+--------------------
+Zaptel is capable of playing ring tone, buy tone etc. for a large variety of
+countries. This is done using the loadzone and defaultzone settings in 
+zaptel.conf.  A list of tone-zones supported by zaptel and libtonezone is 
+included in the file tonezones.txt in the documentation directory. 
+
+Example section of zaptel.conf:
+loadzone=us,uk,de
+defaultzone=us
+
+
+Echo Canceller
+--------------
+Open Source Line Echo Canceller (OSLEC) is an alternative echo canceller 
+developed outside the main Zaptel tree. It is currently labelled "Beta".
+For more information see http://www.rowetel.com/ucasterisk/oslec.html .
+It generally works much better than the default upstream echo canceller
+(MG2). On the downside, it has a higher CPU consumption.
+
+We now include OSLEC and make it our default echo canceller. Unlike the
+original distribution of oslec, we include it as part of the Zaptel
+package. It will get built unless we set an alternative echo canceller.
+If you still want to use the original echo MG2 echo canceller, build 
+the zaptel-modules package using:
+
+  ECHO_CAN_NAME=MG2 m-a a-i zaptel
+
+The oslec code is the package required some minor changes to the code in
+from the oslec repository. Specifically, I have not included the full copy 
+of spandsp here. Instead I picked only the relevant parts. I also placed 
+all the files in the directory oslec/ except the changes required to the
+zaptel sources and makefiles. I have also separated the implementation
+of the zaptap device to a separate patch, as it has a better chances of
+failing to apply with upcoming version of Zaptel and its functionality
+seems to me less important and not as clean.
+
+The oslec echo canceller can be controlled at runtime through files
+under /proc/oslec . A dialg-based interface is available under
+/usr/share/zaptel/examples/oslec-ctrl-panel.sh .
+
+According to early tests by OSLEC users, the default Asterisk echo
+canceller size of 128 taps (16ms) should be good enough for most
+installations, and 256 taps (32 ms) should cover just about any case. 
+For phones connected to FXS ports you can use substatially lower values
+in order to reduce CPU consumption. e.g: 8ms or even 4 ms (64 taps or 32
+taps).
+
+Setting the number of taps for a channel in Asterisk's chan_zap is done
+using the following in Asterisk's zapata.conf: 
+
+  echocancell=NNN
+
+where NNN is the number of taps. See Asterisk sample zapata.conf .
+
+
+Build-time Tests
+----------------
+One sanity check to run when making changes in the package is to make
+(besides the usual lintian/linda) is to make sure that the modules
+packages still builds.
+
+For this to work you should first have a version of zaptel-source
+installed (any version. modules-assitant needs a few files from it in
+place). This allows you to use the script debian/modulestest as a
+post-build hook:
+
+  svn-buildpackage --svn-postbuild='debian/modulestest -r' --svn-ignore-new -uc -us 
+
+This will rebuild the zaptel-modules for your current kernel, or spend
+much more time with:
+
+  svn-buildpackage --svn-postbuild='debian/modulestest -a' --svn-ignore-new -uc -us 
+
+to build zaptel-modules for all of your currently-installed
+zaptel-modules packages. The log from the build will go to the file
+zaptel-modules-build-<version>.log in the build-area directory. e.g:  
+zaptel-modules-build-1.4.7~dfsg-1.log . 
+
+The script should also run ls for the module packages built. You should 
+chack that all packages were indeed built and that their size looks sane
+(no driver was left unbuilt).
+
+
+If you get the "error":
+  
+  zconfig.h:91:41: error: missing binary operator before token "(" 
+
+It is probably harmless. See http://bugs.digium.com/12426 .
+
+
+-- Debian VoIP Team <pkg-voip-maintainers@lists.alioth.debian.org>  16 June 2007

@@ -1,0 +1,11 @@
+# udev rules to generate the /dev/dahdi device files (if not yet provided 
+# by your distribution):
+KERNEL=="dahdictl", NAME="dahdi/ctl"
+KERNEL=="dahditranscode", NAME="dahdi/transcode"
+KERNEL=="dahditimer", NAME="dahdi/timer"
+KERNEL=="dahdichannel", NAME="dahdi/channel"
+KERNEL=="dahdipseudo", NAME="dahdi/pseudo"
+KERNEL=="dahdi[0-9]*", NAME="dahdi/%n"
+
+# DAHDI devices with ownership/permissions for running as non-root
+SUBSYSTEM=="dahdi",  OWNER="asterisk", GROUP="asterisk", MODE="0660"

@@ -1,0 +1,87 @@
+This package was debianized by Marc Dequènes (Duck) <mdequenes@proformatique.com> 
+on Mon, 20 Oct 2008 11:49:55 +0200.
+
+It was downloaded from
+  http://www.asterisk.org/
+
+Upstream source has been modified to comply with the Debian Free 
+Software Guildlines (DFSG), by the removal of the firmware files:
+
+  drivers/dahdi/xpp/firmwares/*.hex
+
+xpp/LICENSE.firmware permits redistribution but does not mention
+modification, which is a requirement of Debian Policy 2.1 ("Derived works").
+
+
+Upstream Authors:
+  Mark Spencer <markster@digium.com>
+  Digium, Inc.
+  Bitstream (trusting Digium licensewise although no license)
+  Hermes Softlab
+  Robert Pleh <robert.pleh@hermes.si>
+  Tony Mountifield <tony@softins.co.uk>
+  Jim Dixon <jim@lambdatel.com>
+  Yury Bokhoncovich <byg@cf1.ru>
+  Zapata Telephony
+  Kevin P. Fleming <kpfleming@digium.com>
+  Matthew Fredrickson <creslin@digium.com>
+  Shaun Ruffell <sruffell@digium.com>
+  Michael Spiceland <mspiceland@digium.com>
+  Steve Underwood <steveu@coppice.org>
+  William Meadows <wmeadows@digium.com>
+  Oron Peled <oron@actcom.co.il>
+  Xorcom
+  Alexander Landau <landau.alex@gmail.com>
+  Krzysztof Halasa <khc@pm.waw.pl>
+  Cronyx Ltd.
+  Serge Vakulenko, <vak@zebub.msk.su>
+  Jan "Yenya" Kasprzak <kas@fi.muni.cz>
+  Andrew Kohlsmith <akohlsmith@mixdown.ca>
+  Octasic Inc.
+  Jared Smith
+  Jeffrey C. Ollie <jeff@ocjtech.us>
+  Jason Parker
+  Joshua Colp <jcolp@digium.com>
+  Kris Boutilier
+  Adaptive Digital Technologies, Inc.
+  Axialys Interactive
+  Nicolas Bougues <nbougues@axialys.net>
+  QRV Communications
+  Michael Gernoth
+  Asterisk Development Team <asteriskteam@digium.com>
+
+Copyright (C) 1994-2008
+
+    GPL-2
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program; if not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+
+    LGPL 2.1
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+

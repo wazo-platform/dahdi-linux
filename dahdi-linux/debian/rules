@@ -1,0 +1,86 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+SRCVER=$(shell echo *.tar.gz | sed -r 's/.*_(.*)\+dfsg.*$$/\1/')
+DEB_TAR_SRCDIR=dahdi-linux-$(SRCVER)
+include /usr/share/cdbs/1/rules/tarball.mk
+include /usr/share/cdbs/1/rules/patchsys-quilt.mk
+DEB_PATCHDIRS = $(CURDIR)/patches
+
+PACKAGE = dahdi-linux-modules
+MA_DIR ?= /usr/share/modass
+-include $(MA_DIR)/include/generic.make
+-include $(MA_DIR)/include/common-rules.make
+KPKG_DESTDIR := $(DEB_DESTDIR)
+
+# fallback for XEN
+ifeq ($(KVERS),unknown)
+KVERS=$(shell uname -r)
+endif
+
+BUILD_SRC_STAMP="debian/stamp-dahdi-linux-source-build"
+
+
+# classic build rules
+
+binary-install/dahdi-source::
+	if [ ! -e "$(BUILD_SRC_STAMP)" ]; then \
+		mkdir -p $(CURDIR)/debian/$(cdbs_curpkg)/usr/src/modules/dahdi-linux; \
+		find $(DEB_BUILDDIR) -mindepth 1 -maxdepth 1 -name "debian" -prune -o -exec \
+			cp -a {} $(CURDIR)/debian/$(cdbs_curpkg)/usr/src/modules/dahdi-linux \;; \
+		mkdir -p $(CURDIR)/debian/$(cdbs_curpkg)/usr/src/modules/dahdi-linux/debian; \
+		cd $(CURDIR)/debian ; cp changelog control \
+			compat *.modules.in rules copyright \
+			$(cdbs_curpkg)/usr/src/modules/dahdi-linux/debian; \
+		cd $(cdbs_curpkg)/usr/src/ ; \
+			tar -cjf dahdi-linux.tar.bz2 modules && rm -rf modules; \
+		touch $(CURDIR)/$(BUILD_SRC_STAMP); \
+	fi
+
+install/dahdi-linux::
+	$(MAKE) -C $(DEB_BUILDDIR) install-modconf ROOT_PREFIX=$(CURDIR)/debian/$(cdbs_curpkg)
+	$(MAKE) -C $(DEB_BUILDDIR) install-devices DESTDIR=$(CURDIR)/debian/$(cdbs_curpkg) DYNFS=yes
+
+binary-install/dahdi-linux::
+	dh_installdocs -p$(cdbs_curpkg) $(DEB_BUILDDIR)/UPGRADE.txt $(DEB_BUILDDIR)/drivers/dahdi/xpp/Changelog_xpp
+
+install/dahdi-linux-dev::
+	$(MAKE) -C $(DEB_BUILDDIR) install-include DESTDIR=$(CURDIR)/debian/$(cdbs_curpkg)
+
+binary-install/dahdi-linux-dev::
+	dh_install -p$(cdbs_curpkg) $(DEB_BUILDDIR)/drivers/dahdi/ecdis.h $(DEB_BUILDDIR)/drivers/dahdi/biquad.h $(DEB_BUILDDIR)/usr/include/dahdi/
+
+clean::
+	rm -rf $(CURDIR)/debian/stamp-dahdi-linux-*
+
+
+# module-assistant rules
+
+kdist_configure: prep-deb-files
+binary-modules: prep-deb-files
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	#
+	$(MAKE) modules
+	$(MAKE) install-modules DESTDIR=$(CURDIR)/debian/$(PKGNAME)
+ifeq (2.6,$(shell echo $(KVERS) | cut -d. -f1-2))
+	# The 2.6 modules are way too big. This is only in kernel 2.6
+	find $(CURDIR)/debian/$(PKGNAME)/lib/modules -name '*.ko' | xargs strip -g
+endif
+	#
+	dh_installmodules
+	dh_installdocs
+	dh_installchangelogs
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	#dh_gencontrol -- -v$(PKGNAME)
+	dh_gencontrol -- -v$(VERSION)
+	dh_md5sums
+	dh_builddeb --destdir=$(KPKG_DESTDIR)
+
+kdist_clean:
+	$(MAKE) dist-clean
+	dh_clean
+

@@ -1,0 +1,88 @@
+dahdi-linux (2:2.6.0+pf.xivo.1.2.2~20120213.154443.f345f86-1) squeeze-xivo-skaro-dev; urgency=low
+
+  * New upstream release.
+
+ -- Etienne Lessard <elessard@avencall.com>  Mon, 13 Feb 2012 10:47:20 -0500
+
+dahdi-linux (2:2.5.0+pf.xivo.1.2~alpha-1.2-1) squeeze-xivo-skaro-dev; urgency=low
+
+  * Fix for packaging-farm
+
+ -- Nicolas HICHER (atarakt) <nhicher@proformatique.com>  Wed, 28 Sep 2011 14:06:56 -0400
+
+dahdi-linux (2:2.5.0+dfsg+pf.xivo.1.2~20110808.142833.016adb9) squeeze-xivo-skaro-dev; urgency=low
+
+  * New upstream release.
+
+ -- Sylvain Boily <sboily@proformatique.com>  Tue, 09 Aug 2011 14:29:02 -0400
+
+dahdi-linux (2:2.4.1.0+dfsg+pf.xivo.1.2~svn10618-3) squeeze-xivo-skaro-dev; urgency=low
+
+  * fix changelog 
+
+ -- Nicolas HICHER (atarakt) <nhicher@proformatique.com>  Mon, 18 Jul 2011 16:41:18 +0200
+
+dahdi-linux (2.4.1.0+dfsg+pf.xivo.1.2~svn10434-4) squeeze-xivo-skaro-dev; urgency=low
+
+  * fix genmodconf 
+
+ -- Nicolas HICHER (atarakt) <nhicher@proformatique.com>  Wed, 30 Mar 2011 10:35:07 +0200
+
+dahdi-linux (2.4.1.0+dfsg+pf.xivo.1.2~svn10378-0) squeeze-xivo-skaro-dev; urgency=low
+
+  * add oslec source 
+
+ -- Nicolas HICHER (atarakt) <nhicher@proformatique.com>  Mon, 07 Mar 2011 14:05:47 +0100
+
+dahdi-linux (2.4.0+dfsg+pf.xivo.1.2~svn9883-0) squeeze-xivo-skaro-dev; urgency=low
+
+  * build for squeeze
+
+ -- Nicolas HICHER (atarakt) <nhicher@proformatique.com>  Wed, 19 Jan 2011 12:32:22 +0100
+
+dahdi-linux (2.4.0+dfsg+pf.1.2.0~svn9137-0) lenny-xivo-skaro-dev; urgency=low
+
+  * New upstream release.
+
+ -- Sylvain Boily <sboily@proformatique.com>  Wed, 08 Sep 2010 16:54:20 -0400
+
+dahdi-linux (2.2.0+dfsg+pf.1.0.10~svn7665-0) etch-xivo-dalek-dev; urgency=low
+
+  * Use tarball mode to be able to add patches included in PF fork.
+
+ -- Marc Dequènes (Duck) <mdequenes@proformatique.com>  Tue, 23 Feb 2010 17:12:19 +0100
+
+dahdi-linux (2.2.0+dfsg+pf.1.0.2~svn6655-0) etch-xivo-dalek-dev; urgency=low
+
+  * 'dahdi_config.h' include is now properly installed by the buildsys,
+    removing from 'dahdi-linux-dev.install'.
+
+ -- Marc Dequènes (Duck) <mdequenes@proformatique.com>  Tue, 30 Jun 2009 11:29:58 +0200
+
+dahdi-linux (2.0.0+dfsg+pf.0.4~svn4419-7) etch-xivo-k-9-dev; urgency=low
+
+  * Reworked kmod package to ensure build-depends are well installed for
+    m-a usage.
+  * Created 'dahdi-linux-modules-common' and moved all kmod-related
+    archall files in it, to allow having several versions installed at
+    once without conflict.
+
+ -- Marc Dequènes (Duck) <mdequenes@proformatique.com>  Thu, 13 Nov 2008 15:04:52 +0100
+
+dahdi-linux (2.0.0+dfsg+pf.0.4~svn4419-6) etch-xivo-k-9-dev; urgency=low
+
+  * Added missing includes (not installed by buildsys).
+
+ -- Marc Dequènes (Duck) <mdequenes@proformatique.com>  Fri, 24 Oct 2008 17:38:47 +0200
+
+dahdi-linux (2.0.0+dfsg-2) etch-xivo-k-9-dev; urgency=low
+
+  * Fixed missing Build-Depends in 'control.modules.in'.
+
+ -- Marc Dequènes (Duck) <mdequenes@proformatique.com>  Wed, 22 Oct 2008 11:30:46 +0200
+
+dahdi-linux (2.0.0+dfsg-1) etch-xivo-k-9-dev; urgency=low
+
+  * Initial release.
+
+ -- Marc Dequènes (Duck) <mdequenes@proformatique.com>  Mon, 20 Oct 2008 11:49:55 +0200
