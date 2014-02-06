@@ -39,7 +39,6 @@ binary-install/dahdi-source::
 
 install/dahdi-linux::
 	$(MAKE) -C $(DEB_BUILDDIR) install-modconf ROOT_PREFIX=$(CURDIR)/debian/$(cdbs_curpkg)
-	$(MAKE) -C $(DEB_BUILDDIR) install-devices DESTDIR=$(CURDIR)/debian/$(cdbs_curpkg) DYNFS=yes
 
 binary-install/dahdi-linux::
 	dh_installdocs -p$(cdbs_curpkg) $(DEB_BUILDDIR)/UPGRADE.txt $(DEB_BUILDDIR)/drivers/dahdi/xpp/Changelog_xpp
