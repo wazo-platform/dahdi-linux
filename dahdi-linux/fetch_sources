@@ -11,9 +11,9 @@ usage()
 
 check_kernel_source() {
     # check if kernel-source are availables in /usr/src
-    KERNEL_SRC_PATH="/usr/src/linux-source-2.6.32"
+    KERNEL_SRC_PATH="/usr/src/linux-source-3.2"
     if [ ! -d  $KERNEL_SRC_PATH ]; then
-        echo "install linux-source-2.6"
+        echo "install linux-source-3.2"
         exit 2
     fi
 }
