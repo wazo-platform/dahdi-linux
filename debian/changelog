@@ -1,4 +1,4 @@
-dahdi-linux (2:2.10.0+xivo.15.11~20150609.193057.9e802cf-wheezy-1) xivo-dev; urgency=medium
+dahdi-linux (2:2.10.1+xivo.15.11~20150609.193057.9e802cf-wheezy-1) xivo-dev; urgency=medium
 
   * Refactor debian packaging
 
