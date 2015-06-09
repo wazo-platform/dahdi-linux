@@ -1,3 +1,9 @@
+dahdi-linux (2:2.10.0+xivo.15.11~20150609.193057.9e802cf-wheezy-1) xivo-dev; urgency=medium
+
+  * Refactor debian packaging
+
+ -- Sylvain Boily <sboily@avencall.com>  Tue, 09 Jun 2015 19:31:09 -0400
+
 dahdi-linux (2:2.6.0+pf.xivo.1.2.2~20120213.154443.f345f86-1) squeeze-xivo-skaro-dev; urgency=low
 
   * New upstream release.
