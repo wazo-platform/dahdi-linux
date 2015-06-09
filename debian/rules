@@ -1,12 +1,11 @@
 #!/usr/bin/make -f
 
-include /usr/share/cdbs/1/rules/debhelper.mk
-SRCVER=$(shell echo *.tar.gz | sed -r 's/.*_(.*)\+dfsg.*$$/\1/')
-DEB_TAR_SRCDIR=dahdi-linux-$(SRCVER)
-include /usr/share/cdbs/1/rules/tarball.mk
-include /usr/share/cdbs/1/rules/patchsys-quilt.mk
-DEB_PATCHDIRS = $(CURDIR)/patches
 
+PKG  = $(word 2,$(shell dpkg-parsechangelog | grep Source))
+VER ?= $(shell dpkg-parsechangelog | grep Version: | awk -F': ' '{print $$NF}' | sed -ne 's/^\(\([0-9]\+\):\)\?\(.*\)-.*/\3/p')
+URL_DOWNLOAD = "http://downloads.digium.com/pub/telephony/dahdi-linux/releases/dahdi-linux-2.10.1.tar.gz"
+
+include /usr/share/cdbs/1/rules/debhelper.mk
 PACKAGE = dahdi-linux-modules
 MA_DIR ?= /usr/share/modass
 -include $(MA_DIR)/include/generic.make
@@ -83,3 +82,8 @@ kdist_clean:
 	$(MAKE) dist-clean
 	dh_clean
 
+.PHONY: get-orig-source
+
+get-orig-source:
+	@echo "# Downloading..."
+	wget -nv -T10 -t3 $(URL_DOWNLOAD) -O ../$(PKG)_$(VER).orig.tar.gz
