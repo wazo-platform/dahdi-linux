@@ -1,8 +1,20 @@
-To allow echo.ko build
-Index: dahdi-linux-2.10.1/drivers/staging/echo/Makefile
+Do not build the echo module. This module is in-kernel since v3.15 and
+newer (though not by version) than the code here. Luckily the oslec.h
+header which defines the interface has not changed because it is not
+a public header in the kernel.
+
+Index: dahdi-linux-2.10.0.1~dfsg/drivers/dahdi/Kbuild
 ===================================================================
---- dahdi-linux-2.10.1.orig/drivers/staging/echo/Makefile
-+++ dahdi-linux-2.10.1/drivers/staging/echo/Makefile
-@@ -1 +1 @@
--obj-$(CONFIG_ECHO) += echo.o
-+obj-m += echo.o
+--- dahdi-linux-2.10.0.1~dfsg.orig/drivers/dahdi/Kbuild 2014-12-02
+18:06:47.000000000 +0100
++++ dahdi-linux-2.10.0.1~dfsg/drivers/dahdi/Kbuild  2014-12-04
+15:02:27.331579685 +0100
+@@ -71,7 +71,7 @@ obj-m += $(DAHDI_MODULES_EXTRA)
+ # well:
+ ifneq (,$(wildcard $(src)/../staging/echo/echo.c))
+ obj-m += dahdi_echocan_oslec.o
+-obj-m += ../staging/echo/echo.o
++#obj-m += ../staging/echo/echo.o
+ endif
+ 
+ CFLAGS_MODULE += -I$(DAHDI_INCLUDE) -I$(src)
