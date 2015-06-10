@@ -5,10 +5,8 @@ a public header in the kernel.
 
 Index: dahdi-linux-2.10.0.1~dfsg/drivers/dahdi/Kbuild
 ===================================================================
---- dahdi-linux-2.10.0.1~dfsg.orig/drivers/dahdi/Kbuild 2014-12-02
-18:06:47.000000000 +0100
-+++ dahdi-linux-2.10.0.1~dfsg/drivers/dahdi/Kbuild  2014-12-04
-15:02:27.331579685 +0100
+--- dahdi-linux-2.10.0.1~dfsg.orig/drivers/dahdi/Kbuild 2014-12-02 18:06:47.000000000 +0100
++++ dahdi-linux-2.10.0.1~dfsg/drivers/dahdi/Kbuild  2014-12-04 15:02:27.331579685 +0100
 @@ -71,7 +71,7 @@ obj-m += $(DAHDI_MODULES_EXTRA)
  # well:
  ifneq (,$(wildcard $(src)/../staging/echo/echo.c))
