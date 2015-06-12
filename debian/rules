@@ -94,5 +94,4 @@ get-orig-source:
 	cd /tmp
 	tar cfvz $(PKG)_$(VER).orig.tar.gz /tmp/dahdi-linux
 	cd -
-	mv /tmp/$(PKG)_$(VER).orig.tar.gz .
-	
+	mv /tmp/$(PKG)_$(VER).orig.tar.gz ..
