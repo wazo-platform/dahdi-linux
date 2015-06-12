@@ -2,4 +2,3 @@ dahdi_linux_extra
 no_firmware_download
 fix_genmodconf.diff
 disable_update_modules.diff
-oslec_makefile.patch

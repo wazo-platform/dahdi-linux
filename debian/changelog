@@ -1,3 +1,9 @@
+dahdi-linux (2:2.10.1+xivo.15.11~20150609.193057.9e802cf-wheezy-3) xivo-dev; urgency=medium
+
+  * Fixes patches from debian
+
+ -- Sylvain Boily <sboily@avencall.com>  Fri, 12 Jun 2015 07:28:09 -0400
+
 dahdi-linux (2:2.10.1+xivo.15.11~20150609.193057.9e802cf-wheezy-2) xivo-dev; urgency=medium
 
   * Force rebuild to get 484 package modules
