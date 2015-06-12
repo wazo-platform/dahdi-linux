@@ -87,4 +87,4 @@ kdist_clean:
 
 get-orig-source:
 	@echo "# Downloading..."
-	wget -nv -T10 -t3 $(URL_DOWNLOAD) -O /tmp/$(PKG)_$(VER).orig.tar.gz
+	wget -nv -T10 -t3 $(URL_DOWNLOAD) -O ../$(PKG)_$(VER).orig.tar.gz
