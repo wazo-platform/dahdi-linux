@@ -3,7 +3,8 @@
 
 PKG  = $(word 2,$(shell dpkg-parsechangelog | grep Source))
 VER ?= $(shell dpkg-parsechangelog | grep Version: | awk -F': ' '{print $$NF}' | sed -ne 's/^\(\([0-9]\+\):\)\?\(.*\)-.*/\3/p')
-URL_DOWNLOAD = "http://downloads.digium.com/pub/telephony/dahdi-linux/releases/dahdi-linux-2.10.1.tar.gz"
+ORIG_VER=2.10.1
+URL_DOWNLOAD = "http://downloads.digium.com/pub/telephony/dahdi-linux/releases/dahdi-linux-${ORIG_VER}.tar.gz"
 
 include /usr/share/cdbs/1/rules/debhelper.mk
 PACKAGE = dahdi-linux-modules
@@ -86,4 +87,12 @@ kdist_clean:
 
 get-orig-source:
 	@echo "# Downloading..."
-	wget -nv -T10 -t3 $(URL_DOWNLOAD) -O ../$(PKG)_$(VER).orig.tar.gz
+	wget -nv -T10 -t3 $(URL_DOWNLOAD) -O /tmp/$(PKG)_$(VER).orig.tar.gz
+	rm -rf /tmp/dahdi-linux /tmp/dahdi-linux-${ORIG_VER}
+	tar xfvz /tmp/$(PKG)_$(VER).orig.tar.gz -C /tmp
+	mv /tmp/dahdi-linux-${ORIG_VER} /tmp/dahdi-linux
+	cd /tmp
+	tar cfvz $(PKG)_$(VER).orig.tar.gz /tmp/dahdi-linux
+	cd -
+	mv /tmp/$(PKG)_$(VER).orig.tar.gz .
+	
