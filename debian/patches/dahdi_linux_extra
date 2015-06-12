@@ -10,11 +10,10 @@ not to be included in DAHDI-linux in the forseeable future.
 Git-Commit: a882f0d0124f391d2ad8f31c6cd3fbde108232e0
 Dahdi: v2.9.2-rc2
 ---
-diff --git a/drivers/staging/echo/Kbuild b/drivers/staging/echo/Kbuild
-new file mode 100644
-index 0000000..f813006
+Index: dahdi-linux-2.10.1/drivers/staging/echo/Kbuild
+===================================================================
 --- /dev/null
-+++ b/drivers/staging/echo/Kbuild
++++ dahdi-linux-2.10.1/drivers/staging/echo/Kbuild
 @@ -0,0 +1,6 @@
 +ifdef DAHDI_USE_MMX
 +EXTRA_CFLAGS += -DUSE_MMX
@@ -22,11 +21,10 @@ index 0000000..f813006
 +
 +# An explicit 'obj-m' , unlike the Makefile
 +obj-m += echo.o
-diff --git a/drivers/staging/echo/echo.c b/drivers/staging/echo/echo.c
-new file mode 100644
-index 0000000..4cc4f2e
+Index: dahdi-linux-2.10.1/drivers/staging/echo/echo.c
+===================================================================
 --- /dev/null
-+++ b/drivers/staging/echo/echo.c
++++ dahdi-linux-2.10.1/drivers/staging/echo/echo.c
 @@ -0,0 +1,662 @@
 +/*
 + * SpanDSP - a series of DSP components for telephony
@@ -690,11 +688,10 @@ index 0000000..4cc4f2e
 +MODULE_AUTHOR("David Rowe");
 +MODULE_DESCRIPTION("Open Source Line Echo Canceller");
 +MODULE_VERSION("0.3.0");
-diff --git a/drivers/staging/echo/echo.h b/drivers/staging/echo/echo.h
-new file mode 100644
-index 0000000..754e66d
+Index: dahdi-linux-2.10.1/drivers/staging/echo/echo.h
+===================================================================
 --- /dev/null
-+++ b/drivers/staging/echo/echo.h
++++ dahdi-linux-2.10.1/drivers/staging/echo/echo.h
 @@ -0,0 +1,175 @@
 +/*
 + * SpanDSP - a series of DSP components for telephony
@@ -871,11 +868,10 @@ index 0000000..754e66d
 +};
 +
 +#endif /* __ECHO_H */
-diff --git a/drivers/staging/echo/fir.h b/drivers/staging/echo/fir.h
-new file mode 100644
-index 0000000..288bffc
+Index: dahdi-linux-2.10.1/drivers/staging/echo/fir.h
+===================================================================
 --- /dev/null
-+++ b/drivers/staging/echo/fir.h
++++ dahdi-linux-2.10.1/drivers/staging/echo/fir.h
 @@ -0,0 +1,286 @@
 +/*
 + * SpanDSP - a series of DSP components for telephony
@@ -1163,11 +1159,10 @@ index 0000000..288bffc
 +}
 +
 +#endif
-diff --git a/drivers/staging/echo/mmx.h b/drivers/staging/echo/mmx.h
-new file mode 100644
-index 0000000..c030cdf
+Index: dahdi-linux-2.10.1/drivers/staging/echo/mmx.h
+===================================================================
 --- /dev/null
-+++ b/drivers/staging/echo/mmx.h
++++ dahdi-linux-2.10.1/drivers/staging/echo/mmx.h
 @@ -0,0 +1,288 @@
 +/*
 + * mmx.h
@@ -1457,11 +1452,10 @@ index 0000000..c030cdf
 +
 +
 +#endif /* AVCODEC_I386MMX_H */
-diff --git a/drivers/staging/echo/oslec.h b/drivers/staging/echo/oslec.h
-new file mode 100644
-index 0000000..f417536
+Index: dahdi-linux-2.10.1/drivers/staging/echo/oslec.h
+===================================================================
 --- /dev/null
-+++ b/drivers/staging/echo/oslec.h
++++ dahdi-linux-2.10.1/drivers/staging/echo/oslec.h
 @@ -0,0 +1,94 @@
 +/*
 + *  OSLEC - A line echo canceller.  This code is being developed
