@@ -2,8 +2,8 @@
 
 
 PKG  = $(word 2,$(shell dpkg-parsechangelog | grep Source))
-VER ?= $(shell dpkg-parsechangelog | grep Version: | awk -F': ' '{print $$NF}' | sed -ne 's/^\(\([0-9]\+\):\)\?\(.*\)-.*/\3/p')
-ORIG_VER=2.10.2
+VER ?= $(shell dpkg-parsechangelog | grep Version: | awk -F':' '{print $$NF}' | sed -e 's/~.*//')
+ORIG_VER=2.11.0
 URL_DOWNLOAD = "http://downloads.digium.com/pub/telephony/dahdi-linux/releases/dahdi-linux-${ORIG_VER}.tar.gz"
 
 include /usr/share/cdbs/1/rules/debhelper.mk

@@ -1,3 +1,9 @@
+dahdi-linux (2:2.11.0-1~xivo1) xivo-dev; urgency=medium
+
+  * update to version 2.11.0
+
+ -- Sylvain Boily <sboily@avencall.com>  Thu, 21 Jan 2016 09:42:32 -0500
+
 dahdi-linux (2:2.10.2+xivo.15.20~20151208.182500-1) xivo-dev; urgency=low
 
   * upgrade to jessie
