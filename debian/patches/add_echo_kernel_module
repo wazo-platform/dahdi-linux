@@ -10,10 +10,10 @@ not to be included in DAHDI-linux in the forseeable future.
 Git-Commit: a882f0d0124f391d2ad8f31c6cd3fbde108232e0
 Dahdi: v2.9.2-rc2
 ---
-Index: dahdi-linux-2.11.0/drivers/staging/echo/Kbuild
+Index: dahdi-linux-2.11.1/drivers/staging/echo/Kbuild
 ===================================================================
 --- /dev/null
-+++ dahdi-linux-2.11.0/drivers/staging/echo/Kbuild
++++ dahdi-linux-2.11.1/drivers/staging/echo/Kbuild
 @@ -0,0 +1,6 @@
 +ifdef DAHDI_USE_MMX
 +EXTRA_CFLAGS += -DUSE_MMX
@@ -21,10 +21,10 @@ Index: dahdi-linux-2.11.0/drivers/staging/echo/Kbuild
 +
 +# An explicit 'obj-m' , unlike the Makefile
 +obj-m += echo.o
-Index: dahdi-linux-2.11.0/drivers/staging/echo/echo.c
+Index: dahdi-linux-2.11.1/drivers/staging/echo/echo.c
 ===================================================================
 --- /dev/null
-+++ dahdi-linux-2.11.0/drivers/staging/echo/echo.c
++++ dahdi-linux-2.11.1/drivers/staging/echo/echo.c
 @@ -0,0 +1,662 @@
 +/*
 + * SpanDSP - a series of DSP components for telephony
@@ -688,10 +688,10 @@ Index: dahdi-linux-2.11.0/drivers/staging/echo/echo.c
 +MODULE_AUTHOR("David Rowe");
 +MODULE_DESCRIPTION("Open Source Line Echo Canceller");
 +MODULE_VERSION("0.3.0");
-Index: dahdi-linux-2.11.0/drivers/staging/echo/echo.h
+Index: dahdi-linux-2.11.1/drivers/staging/echo/echo.h
 ===================================================================
 --- /dev/null
-+++ dahdi-linux-2.11.0/drivers/staging/echo/echo.h
++++ dahdi-linux-2.11.1/drivers/staging/echo/echo.h
 @@ -0,0 +1,175 @@
 +/*
 + * SpanDSP - a series of DSP components for telephony
@@ -868,10 +868,10 @@ Index: dahdi-linux-2.11.0/drivers/staging/echo/echo.h
 +};
 +
 +#endif /* __ECHO_H */
-Index: dahdi-linux-2.11.0/drivers/staging/echo/fir.h
+Index: dahdi-linux-2.11.1/drivers/staging/echo/fir.h
 ===================================================================
 --- /dev/null
-+++ dahdi-linux-2.11.0/drivers/staging/echo/fir.h
++++ dahdi-linux-2.11.1/drivers/staging/echo/fir.h
 @@ -0,0 +1,286 @@
 +/*
 + * SpanDSP - a series of DSP components for telephony
@@ -1159,10 +1159,10 @@ Index: dahdi-linux-2.11.0/drivers/staging/echo/fir.h
 +}
 +
 +#endif
-Index: dahdi-linux-2.11.0/drivers/staging/echo/mmx.h
+Index: dahdi-linux-2.11.1/drivers/staging/echo/mmx.h
 ===================================================================
 --- /dev/null
-+++ dahdi-linux-2.11.0/drivers/staging/echo/mmx.h
++++ dahdi-linux-2.11.1/drivers/staging/echo/mmx.h
 @@ -0,0 +1,288 @@
 +/*
 + * mmx.h
@@ -1452,10 +1452,10 @@ Index: dahdi-linux-2.11.0/drivers/staging/echo/mmx.h
 +
 +
 +#endif /* AVCODEC_I386MMX_H */
-Index: dahdi-linux-2.11.0/drivers/staging/echo/oslec.h
+Index: dahdi-linux-2.11.1/drivers/staging/echo/oslec.h
 ===================================================================
 --- /dev/null
-+++ dahdi-linux-2.11.0/drivers/staging/echo/oslec.h
++++ dahdi-linux-2.11.1/drivers/staging/echo/oslec.h
 @@ -0,0 +1,94 @@
 +/*
 + *  OSLEC - A line echo canceller.  This code is being developed
