@@ -13,3 +13,7 @@ To update the version of dahdi-linux:
     the patch with `quilt refresh`
   * Repeat the last step until all patches have been refreshed
 * Commit and push
+
+When updating the version of DAHDI, you should also check if new firmwares for
+DAHDI cards have been released. If so, you should also update the firmwares in
+xivo-fetchfw.
