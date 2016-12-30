@@ -1,16 +1,14 @@
 Source: dahdi-linux
 Section: comm
 Priority: optional
-Maintainer: XiVO Dev Team <dev+pkg@proformatique.com>
-Uploaders: XiVO Builder Team <release@xivo.io>
-Build-Depends: debhelper (>= 5), quilt, patchutils (>= 0.2.25), cdbs (>= 0.4.27), bzip2, udev
-Standards-Version: 3.7.2
-Homepage: http://www.asterisk.org/
+Maintainer: Wazo Maintainers <dev.wazo@gmail.com>
+Build-Depends: debhelper (>= 5), patchutils (>= 0.2.25), cdbs (>= 0.4.27), bzip2, udev
+Standards-Version: 3.9.6
 
 Package: dahdi-source
 Section: devel
 Architecture: all
-Depends: debhelper (>= 5), quilt, patchutils (>= 0.2.25), cdbs (>= 0.4.27-1), bzip2, libusb-dev, module-assistant
+Depends: debhelper (>= 5), patchutils (>= 0.2.25), cdbs (>= 0.4.27-1), bzip2, libusb-dev, module-assistant
 Description: DAHDI telephony interface (source code for kernel driver)
  This package contains the source code for dahdi-linux kernel module providing
  device drivers for various telephony hardware, including the Wildcard 
