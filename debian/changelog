@@ -1,3 +1,9 @@
+dahdi-linux (2:2.11.1-1~xivo7) wazo-dev-stretch; urgency=medium
+
+  * rebuild
+
+ -- Wazo Maintainers <dev+pkg@wazo.community>  Fri, 12 Jan 2018 13:37:09 -0500
+
 dahdi-linux (2:2.11.1-1~xivo6) wazo-dev-stretch; urgency=medium
 
   * rebuild
