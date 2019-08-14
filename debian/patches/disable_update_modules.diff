@@ -1,10 +1,10 @@
 Nicolas HICHER (atarakt) <nhicher@proformatique.com>
 
 In a virgin squeeze installation for i386, /etc/modutils exists but /sbin/update-modules does not, causing the dahdi-linux Makefile to fail.
-Index: dahdi-linux-2.11.1/Makefile
+Index: dahdi-linux-3.0.0/Makefile
 ===================================================================
---- dahdi-linux-2.11.1.orig/Makefile
-+++ dahdi-linux-2.11.1/Makefile
+--- dahdi-linux-3.0.0.orig/Makefile
++++ dahdi-linux-3.0.0/Makefile
 @@ -98,9 +98,6 @@ uninstall: uninstall-modules uninstall-i
  
  install-modconf:
@@ -13,5 +13,5 @@ Index: dahdi-linux-2.11.1/Makefile
 -		/sbin/update-modules ; \
 -	fi
  
- install-xpp-firm:
- 	$(MAKE) -C drivers/dahdi/xpp/firmwares install
+ 
+ install-firmware:
