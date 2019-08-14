@@ -1,3 +1,9 @@
+dahdi-linux (2:3.0.0-1~wazo1) wazo-dev-stretch; urgency=medium
+
+  * Update to 3.0.0
+
+ -- Wazo Maintainers <dev+pkg@wazo.community>  Wed, 14 Aug 2019 16:57:06 +0200
+
 dahdi-linux (2:2.11.1-1~xivo7) wazo-dev-stretch; urgency=medium
 
   * rebuild
